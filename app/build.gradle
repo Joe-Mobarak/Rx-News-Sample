@@ -22,6 +22,9 @@ android {
         }
     }
 }
+buildscript {
+    ext.retrofit_version = '2.4.0'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -32,6 +35,10 @@ dependencies {
 
     // Gson
     implementation "com.google.code.gson:gson:2.8.5"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
