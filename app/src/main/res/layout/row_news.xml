@@ -10,7 +10,7 @@
         android:layout_margin="20dp"
         tools:context=".ui.NewsActivity">
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/news_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
