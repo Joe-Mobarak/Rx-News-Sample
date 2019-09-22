@@ -37,6 +37,7 @@ class NewsFragment : Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(activity)
         adapter = NewsAdapter(storesList, object : NewsAdapter.INewsItemSelected {
             override fun onNewsItemsClicked(position: Int) {
+                (activity as MainActivity).addFragment(MainActivity.FragmentTypes.NEWS_DETAILS,(storesList[position]))
             }
 
         })
