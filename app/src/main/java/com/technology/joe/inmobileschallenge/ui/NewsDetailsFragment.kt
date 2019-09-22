@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
 import com.technology.joe.inmobileschallenge.R
 import data.model.Article
+import kotlinx.android.synthetic.main.fragment_news_details.*
 
 class NewsDetailsFragment : Fragment() {
 
@@ -33,6 +35,13 @@ class NewsDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         article = (arguments?.getSerializable("storeDetail") as? Article)!!
+        loadDetails()
     }
 
+    private fun loadDetails() {
+        title_text.text = article.title
+        description_text.text = article.description
+        content_text.text = article.content
+        Picasso.get().load(article.urlToImage).into(news_image)
+    }
 }
