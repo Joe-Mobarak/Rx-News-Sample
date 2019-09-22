@@ -1,4 +1,4 @@
-package com.technology.joe.inmobileschallenge.ui
+package com.technology.joe.inmobileschallenge.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.Resource
 import com.technology.joe.inmobileschallenge.R
+import com.technology.joe.inmobileschallenge.ui.activity.NewsActivity
 import com.technology.joe.inmobileschallenge.ui.adapter.NewsAdapter
 import com.technology.joe.inmobileschallenge.ui.viewmodel.NewsViewModel
 import data.model.Article
-import kotlinx.android.synthetic.main.activity_news.*
-import kotlinx.android.synthetic.main.layout_no_internet.*
+import kotlinx.android.synthetic.main.fragment_news_list.*
 
-class NewsFragment : Fragment() {
+class NewsListFragment : Fragment() {
     private lateinit var adapter: NewsAdapter
     private lateinit var viewModel: NewsViewModel
     private val storesList: ArrayList<Article> = ArrayList()
@@ -24,7 +24,7 @@ class NewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_news, container, false)
+        return inflater.inflate(R.layout.fragment_news_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,8 +39,8 @@ class NewsFragment : Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(activity)
         adapter = NewsAdapter(storesList, object : NewsAdapter.INewsItemSelected {
             override fun onNewsItemsClicked(position: Int) {
-                (activity as MainActivity).addFragment(
-                    MainActivity.FragmentTypes.NEWS_DETAILS,
+                (activity as NewsActivity).addFragment(
+                    NewsActivity.FragmentTypes.NEWS_DETAILS,
                     (storesList[position])
                 )
             }

@@ -1,4 +1,4 @@
-package com.technology.joe.inmobileschallenge.ui
+package com.technology.joe.inmobileschallenge.ui.fragment
 
 import android.os.Bundle
 import android.text.TextUtils

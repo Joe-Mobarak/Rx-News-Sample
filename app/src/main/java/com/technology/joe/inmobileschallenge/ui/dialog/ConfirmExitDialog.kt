@@ -1,4 +1,4 @@
-package com.technology.joe.inmobileschallenge.ui
+package com.technology.joe.inmobileschallenge.ui.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.technology.joe.inmobileschallenge.R
 import kotlinx.android.synthetic.main.fragment_confirm_exit.view.*
 
-class ConfirmExitFragment : DialogFragment() {
+class ConfirmExitDialog : DialogFragment() {
 
     private var iConfirmExit: IConfirmExit? = null
 

@@ -1,20 +1,23 @@
-package com.technology.joe.inmobileschallenge.ui
+package com.technology.joe.inmobileschallenge.ui.activity
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.technology.joe.inmobileschallenge.R
+import com.technology.joe.inmobileschallenge.ui.dialog.ConfirmExitDialog
+import com.technology.joe.inmobileschallenge.ui.fragment.NewsDetailsFragment
+import com.technology.joe.inmobileschallenge.ui.fragment.NewsListFragment
 import data.model.Article
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ConfirmExitFragment.IConfirmExit {
+class NewsActivity : AppCompatActivity(), ConfirmExitDialog.IConfirmExit {
 
     override fun onExitBroadcastConfirmed() {
         finish()
     }
 
-    private val newsFragment = NewsFragment()
+    private val newsFragment = NewsListFragment()
 
     enum class FragmentTypes {
         NEWS,
@@ -36,7 +39,8 @@ class MainActivity : AppCompatActivity(), ConfirmExitFragment.IConfirmExit {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val confirmExitFragment = ConfirmExitFragment()
+        val confirmExitFragment =
+            ConfirmExitDialog()
         confirmExitFragment.show(supportFragmentManager, "ss")
         confirmExitFragment.setCallback(this)
         return super.onOptionsItemSelected(item)

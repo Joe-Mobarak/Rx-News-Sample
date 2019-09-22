@@ -11,7 +11,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/news_row_bg"
         android:padding="15dp"
-        tools:context=".ui.NewsFragment">
+        tools:context=".ui.fragment.NewsListFragment">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/news_image"
