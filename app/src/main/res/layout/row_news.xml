@@ -29,6 +29,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/news_image"
             app:layout_constraintTop_toTopOf="parent" />
