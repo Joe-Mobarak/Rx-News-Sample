@@ -32,6 +32,7 @@ android {
 }
 buildscript {
     ext.retrofit_version = '2.4.0'
+    ext.kodein_version = '5.2.0'
 }
 
 dependencies {
@@ -52,6 +53,10 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Kodein
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
