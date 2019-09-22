@@ -36,7 +36,7 @@ class ConfirmExitDialog : DialogFragment() {
         super.onStart()
         val dialog = dialog
         val width = (resources.displayMetrics.widthPixels * 0.80).toInt()
-        val height = (resources.displayMetrics.heightPixels * 0.45).toInt()
+        val height = (resources.displayMetrics.heightPixels * 0.30).toInt()
         dialog?.window?.setLayout(width, height)
 
     }
