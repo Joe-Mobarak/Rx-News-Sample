@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.technology.joe.inmobileschallenge"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            Properties props = loadPropertiesFromFile("./config/dev.properties")
+            buildConfigField("String", "apiKey", props["apiKey"])
+            buildConfigField("String", "baseUrl", props["baseUrl"])
+        }
+        release {
+            Properties props = loadPropertiesFromFile("./config/dev.properties")
+            buildConfigField("String", "apiKey", props["apiKey"])
+            buildConfigField("String", "baseUrl", props["baseUrl"])
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+android {
+    dataBinding {
+        enabled = true
+    }
+}
+
+
+buildscript {
+    ext.retrofit_version = '2.4.0'
+    ext.kodein_version = '5.2.0'
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+
+    //Lifecycle
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Kodein
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //CircularImageView
+    implementation 'com.mikhaellopez:circularimageview:4.0.1'
+
+    //Date
+    implementation 'info.vividcode:date-format-iso8601:1.0.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    
+}
+
+def loadPropertiesFromFile(String filePath) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file(project.file(filePath))))
+    return props
+}
