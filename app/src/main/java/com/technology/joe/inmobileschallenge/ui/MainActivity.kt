@@ -8,7 +8,11 @@ import com.technology.joe.inmobileschallenge.R
 import data.model.Article
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ConfirmExitFragment.IConfirmExit {
+
+    override fun onExitBroadcastConfirmed() {
+        finish()
+    }
 
     private val newsFragment = NewsFragment()
 
@@ -32,7 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        finish()
+        val confirmExitFragment = ConfirmExitFragment()
+        confirmExitFragment.show(supportFragmentManager, "ss")
+        confirmExitFragment.setCallback(this)
         return super.onOptionsItemSelected(item)
     }
 
