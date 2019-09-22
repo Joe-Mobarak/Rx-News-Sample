@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import base.Resource
 import com.technology.joe.inmobileschallenge.R
 import com.technology.joe.inmobileschallenge.ui.adapter.NewsAdapter
 import com.technology.joe.inmobileschallenge.ui.viewmodel.NewsViewModel
 import data.model.Article
 import kotlinx.android.synthetic.main.activity_news.*
+import kotlinx.android.synthetic.main.layout_no_internet.*
 
 class NewsFragment : Fragment() {
     private lateinit var adapter: NewsAdapter
@@ -37,7 +39,10 @@ class NewsFragment : Fragment() {
         recycler_view.layoutManager = LinearLayoutManager(activity)
         adapter = NewsAdapter(storesList, object : NewsAdapter.INewsItemSelected {
             override fun onNewsItemsClicked(position: Int) {
-                (activity as MainActivity).addFragment(MainActivity.FragmentTypes.NEWS_DETAILS,(storesList[position]))
+                (activity as MainActivity).addFragment(
+                    MainActivity.FragmentTypes.NEWS_DETAILS,
+                    (storesList[position])
+                )
             }
 
         })
@@ -48,10 +53,18 @@ class NewsFragment : Fragment() {
         viewModel = NewsViewModel()
         viewModel.news.observe(this, Observer {
             it?.let {
-                storesList.clear()
-                it.data?.let { it1 -> storesList.addAll(it1) }
-                refresh.isRefreshing = false
-                adapter.notifyDataSetChanged()
+                if (it.status == Resource.STATUS_NO_INTERNET) {
+                    no_internet_layout.visibility = View.VISIBLE
+                    recycler_view.visibility = View.GONE
+                    refresh.isRefreshing = false
+                } else {
+                    no_internet_layout.visibility = View.GONE
+                    recycler_view.visibility = View.VISIBLE
+                    storesList.clear()
+                    it.data?.let { it1 -> storesList.addAll(it1) }
+                    refresh.isRefreshing = false
+                    adapter.notifyDataSetChanged()
+                }
             }
         })
     }
