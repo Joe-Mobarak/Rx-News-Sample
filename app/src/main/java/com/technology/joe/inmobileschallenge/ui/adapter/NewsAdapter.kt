@@ -1,5 +1,6 @@
 package com.technology.joe.inmobileschallenge.ui.adapter
 
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -31,6 +32,7 @@ class NewsAdapter(private val news: ArrayList<Article>,val iNewsItemSelected: IN
         val model = news[position]
         holder.binding.authorText.text = model.author
         holder.binding.titleText.text = model.title
+        if (!TextUtils.isEmpty(model.urlToImage))
         Picasso.get().load(model.urlToImage).placeholder(R.drawable.news_ic_placeholder)
             .into(holder.binding.newsImage)
         holder.binding.parentLayout.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.technology.joe.inmobileschallenge.ui
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class NewsDetailsFragment : Fragment() {
         title_text.text = article.title
         description_text.text = article.description
         content_text.text = article.content
+        if (!TextUtils.isEmpty(article.urlToImage))
         Picasso.get().load(article.urlToImage).into(news_image)
     }
 }
