@@ -9,7 +9,7 @@ import data.repository.NewsRepository
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsViewModel : ViewModel() {
+class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
     private val _news: MutableLiveData<Resource<List<Article>>> = MutableLiveData()
     val news: LiveData<Resource<List<Article>>>
         get() = _news
@@ -19,7 +19,6 @@ class NewsViewModel : ViewModel() {
     }
 
      fun getAllNews() {
-        val newsRepository = NewsRepository()
         val sdf = SimpleDateFormat(("yyyy/MM/dd"), Locale.US)
         val currentDate = sdf.format(Calendar.getInstance().time)
         val type = "news"
