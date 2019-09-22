@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 import com.technology.joe.inmobileschallenge.R
 import data.model.Article
 import kotlinx.android.synthetic.main.fragment_news_details.*
+import util.Utils
 
 class NewsDetailsFragment : Fragment() {
 
@@ -45,5 +46,9 @@ class NewsDetailsFragment : Fragment() {
         content_text.text = article.content
         if (!TextUtils.isEmpty(article.urlToImage))
         Picasso.get().load(article.urlToImage).into(news_image)
+        Utils.formatISODate(article.publishedAt)?.let {
+            val authorDetails=article.author+" at : "+it.second+" on : "+it.first
+            author_details.text=authorDetails
+        }
     }
 }
