@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class NewsAPI {
+class NewsAPI(private val retrofitBuilder: RetrofitBuilder) {
 
     fun getAll(
         date: String,
@@ -19,7 +19,6 @@ class NewsAPI {
         apiKey: String,
         closure: (Resource<List<Article>>?) -> Unit
     ) {
-        val retrofitBuilder = RetrofitBuilder()
         val service = retrofitBuilder.createRetrofitService()!!.create(NewsAPIInterface::class.java)
         val stringCall: Call<NewsAPIResult>
         stringCall = service.getAll(date, type, sortBy, apiKey)
