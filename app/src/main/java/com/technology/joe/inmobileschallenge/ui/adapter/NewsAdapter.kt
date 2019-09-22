@@ -9,8 +9,9 @@ import com.technology.joe.inmobileschallenge.R
 import com.technology.joe.inmobileschallenge.databinding.NewsRowBinding
 import data.model.Article
 
-class NewsAdapter(private val news: ArrayList<Article>) :
+class NewsAdapter(private val news: ArrayList<Article>,val iNewsItemSelected: INewsItemSelected) :
     RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {
+
     override fun getItemCount(): Int {
         return news.size
     }
@@ -30,11 +31,18 @@ class NewsAdapter(private val news: ArrayList<Article>) :
         val model = news[position]
         holder.binding.authorText.text = model.author
         holder.binding.titleText.text = model.title
-        Picasso.get().load(model.urlToImage).placeholder(R.drawable.news_ic_placeholder).into(holder.binding.newsImage)
+        Picasso.get().load(model.urlToImage).placeholder(R.drawable.news_ic_placeholder)
+            .into(holder.binding.newsImage)
+        holder.binding.parentLayout.setOnClickListener {
+            iNewsItemSelected.onNewsItemsClicked(position)
+        }
     }
 
 
     class NewsItemViewHolder(val binding: NewsRowBinding) :
         RecyclerView.ViewHolder(binding.root)
 
+    interface INewsItemSelected {
+        fun onNewsItemsClicked(position: Int)
+    }
 }
