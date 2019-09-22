@@ -1,5 +1,6 @@
 package data.repository
 
+import base.Resource
 import data.model.Article
 import network.api.NewsAPI
 
@@ -10,7 +11,7 @@ class NewsRepository {
         type: String,
         sortBy: String,
         apiKey: String,
-        closure: (List<Article>) -> Unit
+        closure: (Resource<List<Article>>) -> Unit
     ) {
         val newsApi = NewsAPI()
         newsApi.getAll(date, type, sortBy, apiKey)

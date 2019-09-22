@@ -1,5 +1,6 @@
 package network.api
 
+import base.Resource
 import data.model.Article
 import data.model.NewsAPIResult
 import network.builder.RetrofitBuilder
@@ -16,7 +17,7 @@ class NewsAPI {
         type: String,
         sortBy: String,
         apiKey: String,
-        closure: (List<Article>?) -> Unit
+        closure: (Resource<List<Article>>?) -> Unit
     ) {
         val retrofitBuilder = RetrofitBuilder()
         val service = retrofitBuilder.createRetrofitService()!!.create(NewsAPIInterface::class.java)
@@ -29,12 +30,17 @@ class NewsAPI {
                 response: Response<NewsAPIResult>
             ) {
                 if (response.isSuccessful) {
-                    closure(response.body()?.articles)
-                }
+                    closure(
+                        Resource(
+                            Resource.STATUS_SUCCESS,
+                            response.body()?.articles
+                        )
+                    )
+                } else closure(Resource(Resource.STATUS_ERROR, null))
             }
 
             override fun onFailure(call: Call<NewsAPIResult>, t: Throwable) {
-                closure(null)
+                closure(Resource(Resource.STATUS_NO_INTERNET, null))
             }
         })
     }

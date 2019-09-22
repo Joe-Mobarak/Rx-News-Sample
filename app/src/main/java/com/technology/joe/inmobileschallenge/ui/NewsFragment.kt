@@ -49,7 +49,7 @@ class NewsFragment : Fragment() {
         viewModel.news.observe(this, Observer {
             it?.let {
                 storesList.clear()
-                storesList.addAll(it)
+                it.data?.let { it1 -> storesList.addAll(it1) }
                 refresh.isRefreshing = false
                 adapter.notifyDataSetChanged()
             }
