@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private val newsFragment = NewsFragment()
+
     enum class FragmentTypes {
         NEWS,
         NEWS_DETAILS
@@ -18,8 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolBar);
-
+        setSupportActionBar(toolBar)
         addFragment(FragmentTypes.NEWS, null)
 
     }
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.container,
-                    NewsFragment()
+                    newsFragment
                 )
                 .addToBackStack("ss")
                 .commit()
@@ -56,5 +57,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (!newsFragment.isVisible)
+            finish()
     }
 }
