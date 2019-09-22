@@ -17,7 +17,7 @@ class NewsViewModel : ViewModel() {
         getAllNews()
     }
 
-    private fun getAllNews() {
+     fun getAllNews() {
         val newsRepository = NewsRepository()
         val sdf = SimpleDateFormat(("yyyy/MM/dd"), Locale.US)
         val currentDate = sdf.format(Calendar.getInstance().time)

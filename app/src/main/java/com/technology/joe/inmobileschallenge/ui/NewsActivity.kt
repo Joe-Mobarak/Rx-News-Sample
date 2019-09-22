@@ -21,6 +21,7 @@ class NewsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_news)
         setUpRecyclerView()
         setUpViewModel()
+        setPullToRefresh()
     }
 
     private fun setUpRecyclerView() {
@@ -33,9 +34,17 @@ class NewsActivity : AppCompatActivity() {
         viewModel = NewsViewModel()
         viewModel.news.observe(this, Observer {
             it?.let {
+                storesList.clear()
                 storesList.addAll(it)
+                refresh.isRefreshing=false
                 adapter.notifyDataSetChanged()
             }
         })
+    }
+
+    private fun setPullToRefresh() {
+        refresh.setOnRefreshListener {
+            viewModel.getAllNews()
+        }
     }
 }
