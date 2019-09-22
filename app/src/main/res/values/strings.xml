@@ -4,5 +4,6 @@
     //errors
     <string name="error_no_connection">No Internet connection</string>
     <string name="error_unknown">Something went wrong</string>
+    <string name="error_empty">No news yet today , please come back later</string>
 
 </resources>
