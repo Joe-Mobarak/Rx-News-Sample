@@ -64,15 +64,26 @@ class NewsListFragment : Fragment(), KodeinAware {
                 if (it.status == Resource.STATUS_NO_INTERNET) {
                     no_internet_layout.visibility = View.VISIBLE
                     recycler_view.visibility = View.GONE
-                    refresh.isRefreshing = false
+                    empty_layout.visibility = View.GONE
                 } else {
-                    no_internet_layout.visibility = View.GONE
-                    recycler_view.visibility = View.VISIBLE
-                    storesList.clear()
-                    it.data?.let { it1 -> storesList.addAll(it1) }
-                    refresh.isRefreshing = false
-                    adapter.notifyDataSetChanged()
+                    it.data?.let {
+                        if (it.isEmpty()) {
+                            no_internet_layout.visibility = View.GONE
+                            empty_layout.visibility = View.VISIBLE
+                            recycler_view.visibility = View.GONE
+
+                        } else {
+                            no_internet_layout.visibility = View.GONE
+                            recycler_view.visibility = View.VISIBLE
+                            empty_layout.visibility = View.GONE
+                            storesList.clear()
+                            storesList.addAll(it)
+                            adapter.notifyDataSetChanged()
+
+                        }
+                    }
                 }
+                refresh.isRefreshing = false
             }
         })
     }
