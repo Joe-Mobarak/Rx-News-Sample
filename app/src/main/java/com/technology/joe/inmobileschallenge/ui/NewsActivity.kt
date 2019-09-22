@@ -1,6 +1,7 @@
 package com.technology.joe.inmobileschallenge.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +27,11 @@ class NewsActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         recycler_view.layoutManager = LinearLayoutManager(this)
-        adapter = NewsAdapter(storesList)
+        adapter = NewsAdapter(storesList, object : NewsAdapter.INewsItemSelected {
+            override fun onNewsItemsClicked(position: Int) {
+            }
+
+        })
         recycler_view.adapter = adapter
     }
 
@@ -36,7 +41,7 @@ class NewsActivity : AppCompatActivity() {
             it?.let {
                 storesList.clear()
                 storesList.addAll(it)
-                refresh.isRefreshing=false
+                refresh.isRefreshing = false
                 adapter.notifyDataSetChanged()
             }
         })
