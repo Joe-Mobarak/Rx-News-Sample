@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.technology.joe.inmobileschallenge.R
 import com.technology.joe.inmobileschallenge.databinding.NewsRowBinding
-import data.model.Article
+import com.technology.joe.inmobileschallenge.model.Article
 
 class NewsAdapter(private val news: ArrayList<Article>,val iNewsItemSelected: INewsItemSelected) :
     RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder>() {

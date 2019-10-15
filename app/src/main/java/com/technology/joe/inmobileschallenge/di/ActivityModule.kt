@@ -1,4 +1,4 @@
-package com.technology.joe.inmobileschallenge.ui.application
+package com.technology.joe.inmobileschallenge.di
 
 
 import com.technology.joe.inmobileschallenge.ui.viewmodel.NewsViewModelFactory

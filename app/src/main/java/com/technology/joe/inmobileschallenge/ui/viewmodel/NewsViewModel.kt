@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import base.Resource
 import com.technology.joe.inmobileschallenge.BuildConfig
-import data.model.Article
-import network.service.NewsAPIService
-import util.IRxSchedulers
-import util.Utils
+import com.technology.joe.inmobileschallenge.model.Article
+import com.technology.joe.inmobileschallenge.network.service.NewsAPIService
+import com.technology.joe.inmobileschallenge.util.IRxSchedulers
+import com.technology.joe.inmobileschallenge.util.Utils
 
 class NewsViewModel(private val api: NewsAPIService, private val schedulers: IRxSchedulers) :
     BaseViewModel() {

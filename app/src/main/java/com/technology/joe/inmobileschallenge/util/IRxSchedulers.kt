@@ -1,4 +1,4 @@
-package util
+package com.technology.joe.inmobileschallenge.util
 
 import io.reactivex.Scheduler
 

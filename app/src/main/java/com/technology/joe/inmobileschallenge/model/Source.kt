@@ -1,4 +1,4 @@
-package data.model
+package com.technology.joe.inmobileschallenge.model
 
 import com.squareup.moshi.Json
 import java.io.Serializable

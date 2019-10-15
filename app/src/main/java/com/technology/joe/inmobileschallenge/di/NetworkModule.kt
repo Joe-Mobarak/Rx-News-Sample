@@ -1,7 +1,7 @@
-package com.technology.joe.inmobileschallenge.ui.application
+package com.technology.joe.inmobileschallenge.di
 
 import com.technology.joe.inmobileschallenge.BuildConfig
-import network.service.NewsAPIService
+import com.technology.joe.inmobileschallenge.network.service.NewsAPIService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.Kodein.Module
@@ -16,8 +16,16 @@ private const val MODULE_NAME = "Network Module"
 
 val networkModule = Module(MODULE_NAME, false) {
     bind<OkHttpClient>() with singleton { getMockOkHttpClient() }
-    bind<Retrofit>() with singleton { getMockRetrofit(instance()) }
-    bind<NewsAPIService>() with singleton { getMockApiService(instance()) }
+    bind<Retrofit>() with singleton {
+        getMockRetrofit(
+            instance()
+        )
+    }
+    bind<NewsAPIService>() with singleton {
+        getMockApiService(
+            instance()
+        )
+    }
 }
 
 private fun getMockOkHttpClient(): OkHttpClient {

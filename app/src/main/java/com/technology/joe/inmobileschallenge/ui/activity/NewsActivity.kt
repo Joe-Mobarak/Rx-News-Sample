@@ -8,7 +8,7 @@ import com.technology.joe.inmobileschallenge.R
 import com.technology.joe.inmobileschallenge.ui.dialog.ConfirmExitDialog
 import com.technology.joe.inmobileschallenge.ui.fragment.NewsDetailsFragment
 import com.technology.joe.inmobileschallenge.ui.fragment.NewsListFragment
-import data.model.Article
+import com.technology.joe.inmobileschallenge.model.Article
 import kotlinx.android.synthetic.main.activity_main.*
 
 class NewsActivity : AppCompatActivity(), ConfirmExitDialog.IConfirmExit {

@@ -1,9 +1,8 @@
-package network.service
+package com.technology.joe.inmobileschallenge.network.service
 
-import data.model.NewsAPIResult
+import com.technology.joe.inmobileschallenge.model.NewsAPIResult
 import io.reactivex.Single
-import network.builder.UrlBuilder
-import retrofit2.Call
+import com.technology.joe.inmobileschallenge.network.builder.UrlBuilder
 import retrofit2.http.GET
 import retrofit2.http.Query
 

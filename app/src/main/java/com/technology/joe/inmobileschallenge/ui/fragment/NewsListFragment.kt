@@ -8,13 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import base.Resource
 import com.technology.joe.inmobileschallenge.R
 import com.technology.joe.inmobileschallenge.ui.activity.NewsActivity
 import com.technology.joe.inmobileschallenge.ui.adapter.NewsAdapter
 import com.technology.joe.inmobileschallenge.ui.viewmodel.NewsViewModel
 import com.technology.joe.inmobileschallenge.ui.viewmodel.NewsViewModelFactory
-import data.model.Article
+import com.technology.joe.inmobileschallenge.model.Article
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
