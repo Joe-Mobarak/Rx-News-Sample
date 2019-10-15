@@ -1,4 +1,4 @@
-package network.builder
+package com.technology.joe.inmobileschallenge.network.builder
 
 import com.technology.joe.inmobileschallenge.BuildConfig
 

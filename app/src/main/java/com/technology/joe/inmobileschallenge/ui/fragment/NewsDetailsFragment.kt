@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import com.technology.joe.inmobileschallenge.R
-import data.model.Article
+import com.technology.joe.inmobileschallenge.model.Article
 import kotlinx.android.synthetic.main.fragment_news_details.*
-import util.Utils
+import com.technology.joe.inmobileschallenge.util.Utils
 
 class NewsDetailsFragment : Fragment() {
 

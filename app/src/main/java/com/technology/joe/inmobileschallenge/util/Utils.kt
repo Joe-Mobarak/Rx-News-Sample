@@ -1,4 +1,4 @@
-package util
+package com.technology.joe.inmobileschallenge.util
 
 import info.vividcode.time.iso8601.Iso8601ExtendedOffsetDateTimeFormat
 import java.text.SimpleDateFormat
