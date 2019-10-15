@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InMobilesChallenge</string>
+    <string name="app_name">News</string>
 
     //errors
     <string name="error_no_connection">No Internet connection</string>
