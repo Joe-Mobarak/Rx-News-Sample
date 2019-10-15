@@ -1,23 +1,15 @@
 package data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import java.io.Serializable
 
 data class Article(
-    @SerializedName("author")
-    val author: String,
-    @SerializedName("content")
-    val content: String,
-    @SerializedName("description")
-    val description: String,
-    @SerializedName("publishedAt")
-    val publishedAt: String,
-    @SerializedName("source")
-    val source: Source,
-    @SerializedName("title")
-    val title: String,
-    @SerializedName("url")
-    val url: String,
-    @SerializedName("urlToImage")
-    val urlToImage: String
+    @field:Json(name = "author") val author: String,
+    @field:Json(name = "content") val content: String,
+    @field:Json(name = "publishedAt") val publishedAt: String,
+    @field:Json(name = "source") val source: Source,
+    @field:Json(name = "title") val title: String,
+    @field:Json(name = "description") val description: String,
+    @field:Json(name = "url") val url: String,
+    @field:Json(name = "urlToImage") val urlToImage: String
 ) : Serializable

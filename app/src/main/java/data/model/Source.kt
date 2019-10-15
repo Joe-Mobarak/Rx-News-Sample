@@ -1,11 +1,9 @@
 package data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import java.io.Serializable
 
 data class Source(
-    @SerializedName("id")
-    val id: Any,
-    @SerializedName("name")
-    val name: String
+    @field:Json(name = "id") val id: Any,
+    @field:Json(name = "name") val name: Any
 ) : Serializable
