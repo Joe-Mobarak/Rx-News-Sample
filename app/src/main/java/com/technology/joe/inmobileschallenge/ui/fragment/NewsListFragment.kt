@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_news_list.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
+import java.net.UnknownHostException
 
 class NewsListFragment : Fragment(), KodeinAware {
     private lateinit var adapter: NewsAdapter
@@ -61,7 +62,7 @@ class NewsListFragment : Fragment(), KodeinAware {
             ViewModelProviders.of(this, viewModelFactory).get(NewsViewModel::class.java)
         viewModel.news.observe(this, Observer {
             it?.let {
-                if (it.status == Resource.STATUS_NO_INTERNET) {
+                if (it.throwable is UnknownHostException) {
                     no_internet_layout.visibility = View.VISIBLE
                     recycler_view.visibility = View.GONE
                     empty_layout.visibility = View.GONE
